@@ -1,0 +1,80 @@
+{% load static %}
+{% static "Drawing Image" as baseUrl %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="this is the description">
+        <link rel="stylesheet"href="{% static 'styles.css' %}">
+        <script src="store.js"></script>
+        <title> Painting Shop | Store</title>
+    </head>
+    <body>
+    <header class="main-header">
+        <center>
+        <nav class="nav main-nav">
+            <ul>
+                <li><a href="{% url 'home' %}">HOME</a></li>
+                <li><a href="{% url 'about' %}">ABOUT</a></li>
+                <li><a href="{% url 'store' %}">STORE</a></li>
+                {% if user.is_authenticated %}
+                <li>Hello, {{user.first_name}}</li>
+                <li><a href="{% url 'logout' %}">Logout</a></li>
+                {% else %}
+                <li><a href="{% url 'register' %}">Register</a></li>
+                <li><a href="{% url 'login' %}">Login</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+        </center>
+        <hr>
+        <h1 class="shop-name shop-name-large"> PAINTING SHOP</h1>
+            <div class="container">
+                <button class="btn btn-header"type="button">Get our Latest Album</button>
+                <button class="btn btn-header btn-play" type="button">&#9658;</button>
+            </div>
+    </header>
+        I wanna get this all!
+        <section class="content-section container">
+            <h2 class="section-header">Gallery</h2>
+            {% for paint in paint %}
+            <div>
+                <div class="gallery-row">
+                    <img class="gallery-item gallery-image"  src="{{paint.img.url}}" alt="">
+                    <span class="gallery-item gallery-city">{{paint.name}}</span>
+                    <span class="gallery-item gallery-city">${{paint.price}}</span>
+                    <button type="button" class="btn gallery-item gallery-btn btn-primary">BUY</button>
+                    <p>{{paint.paint}}</p>
+                </div>
+               
+                {% endfor %}
+               
+        </section>
+            <h3>The Painting Shope</h3>
+            <footer class="main-footer">
+                <div class="container main-footer-container">
+                    <h3 class="shop-name">Painting Shop</h3>
+                    <ul class="nav footer-nav">
+                        <li>
+                            <a href="https://www.youtube.com/channel/UC3cHU9t08Yzb4nhfKLRAu4w" target="_blank">
+                                <img src="{{baseUrl}}/logo-youtube.png"width="50"height="50">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.instagram.com/painting_shap/" target="_blank">
+                                <img src="{{baseUrl}}/logo-instagram.png"width="50"height="50">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.facebook.com/exihibition.paintingshop/" target="_blank">
+                                <img src="{{baseUrl}}/logo-facebook.png"width="50"height="50">
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </footer>
+  
+    </body>
+</html>

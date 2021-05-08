@@ -1,0 +1,73 @@
+{% load static  %}
+{% static "Drawing Image" as baseUrl %}
+
+<html>
+    <head>
+        <title> Painting Shop | Store</title>
+        <meta name="description" content="this is the description">
+        <link rel="stylesheet"href="{% static 'styles.css' %}">
+        <script src="store.js"></script>
+    </head>
+
+    <body action="add" method='post'>
+    <header class="main-header">
+        <center>
+        <nav class="nav main-nav">
+            <ul>
+                <li><a href="{% url 'home' %}">HOME</a></li>
+                <li><a href="{% url 'about' %}">ABOUT</a></li>
+                <li><a href="{% url 'store' %}">STORE</a></li>
+                {% if user.is_authenticated %}
+                <li>Hello,{{user.first_name}}</li>
+                <li><a href="{% url 'logout' %}">Logout</a></li>
+                {% else %}
+
+                <li><a href="{% url 'register' %}">Register</a></li>
+                <li><a href="{% url 'login' %}">Login</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+        </center>
+            <h1 class="shop-name shop-name-large"> PAINTING SHOP</h1>
+    </header>
+    <section class="content-section container">
+        <h2 class="section-header">About</h2>
+        <img class="about-shop-image"src="{{baseUrl}}/{{paint.img}}" alt="">
+        <p> A hande made painting lover section is here ,which gives you a good exprience.</p>
+        <p> it feeles you to a realistic and buetifull.</p>
+        As I work at my drawings, day after day, what seemed unattainable before is now gradually becoming possible. Slowly, I'm learning to observe and measure. I don't stand quite so helpless before nature any longer.
+        this painting hardly take three or four dayes  to made it . 
+        <p> Most of these are maded in my chaidhood ,that's why the are very close to my heart.</p>
+        <p>A work of art which did not begin in emotion is not art.</p>
+        <p>Art is never finished, only abandoned.</p>
+        <p>There is no must in art because art is free.</p>
+        <p>To my mind a picture should be something pleasant, cheerful and pretty. There are too many unpleasant things in life as it is, without creating still more of them.</p>
+        <p>A true artist is not one who is inspired, but one who inspires others.</p>
+        <p>A true masterpiece does not tell everything.</p>
+        <p>If you as a designer don’t believe in your design and don’t see it beyond the context of the film, instead of as a real creature in a real world then how can you expect the audience to believe it?</p>
+    </section>
+    <footer class="main-footer">
+    <div class="container main-footer-container">
+        <h3 class="shop-name">Painting Shop</h3>
+        <ul class="nav footer-nav">
+            <li>
+                <a href="https://www.youtube.com/channel/UC3cHU9t08Yzb4nhfKLRAu4w" target="_blank">
+                    <img src="{{baseUrl}}/logo-youtube.png"width="50"height="50">
+                </a>
+            </li>
+            <li>
+                <a href="https://www.instagram.com/painting_shap/" target="_blank">
+                    <img src="{{baseUrl}}/logo-instagram.png"width="50"height="50">
+                </a>
+            </li>
+            <li>
+                <a href="https://www.facebook.com/exihibition.paintingshop/" target="_blank">
+                    <img src="{{baseUrl}}/logo-facebook.png"width="50"height="50">
+                </a>
+            </li>
+        </ul>   
+    </div>
+    </footer>
+    </body>
+</html>
+
